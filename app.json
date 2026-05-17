@@ -6,8 +6,7 @@
     "orientation": "portrait",
     "owner": "dharaneesh006",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
+    "userInterfaceStyle": "dark",    "newArchEnabled": true,
     "jsEngine": "jsc",
     "runtimeVersion": "1.0.0",
     "splash": {
