@@ -1,29 +1,70 @@
 {
   "expo": {
-    "name": "NeonMusicPlayerExpo",
-    "slug": "NeonMusicPlayerExpo",
+    "name": "NeonMusicPlayer",
+    "slug": "neonmusicplayer",
     "version": "1.0.0",
     "orientation": "portrait",
+    "owner": "dharaneesh006",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
+    "jsEngine": "jsc",
+    "runtimeVersion": "1.0.0",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0A0A0F"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.neonmusic.player",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Allow Neon Music Player to use local network",
+        "NSBonjourServiceTypes": ["_http._tcp"],
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSAppleMusicUsageDescription": "This app needs access to your music library",
+        "UIFileSharingEnabled": true,
+        "LSSupportsOpeningDocumentsInPlace": true
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#0A0A0F"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.neonmusic.player",
+      "versionCode": 1,
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "READ_MEDIA_AUDIO",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ],
+      "intentFilters": [
+        {
+          "action": "android.intent.action.MAIN",
+          "category": [
+            "android.intent.category.LAUNCHER"
+          ]
+        }
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "display": "standalone"
+    },
+    "updates": {
+      "enabled": false
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bfc22a1a-5b5e-4678-9a6e-9bc7dbe7ea3f"
+      }
     }
+    
   }
 }

@@ -1,20 +1,48 @@
+import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AppNavigator from './src/navigation/AppNavigator';
+import ErrorBoundary from './src/components/ErrorBoundary';
+import { setupTrackPlayer } from './src/trackPlayerService';
+import { requestAllPermissions } from './src/utils/permissions';
+import { logger } from './src/utils/logger';
+import { logConfig } from './src/config';
+
+function AppInitializer() {
+  useEffect(() => {
+    const initializeApp = async () => {
+      try {
+        // Log configuration
+        logConfig();
+        
+        logger.info('Initializing application...');
+
+        // Request permissions
+        const permissions = await requestAllPermissions();
+        logger.info('Permissions requested', permissions);
+
+        // Setup track player
+        await setupTrackPlayer();
+
+        logger.info('Application initialized successfully');
+      } catch (error) {
+        logger.error('Failed to initialize application', error);
+      }
+    };
+
+    initializeApp();
+  }, []);
+
+  return <AppNavigator />;
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ErrorBoundary>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <AppInitializer />
+        <StatusBar barStyle="light-content" />
+      </GestureHandlerRootView>
+    </ErrorBoundary>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

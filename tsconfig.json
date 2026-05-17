@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2020"],
+    "types": ["react-native"]
+  },
+  "extends": "expo/tsconfig.base"
+}
